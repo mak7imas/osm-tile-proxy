@@ -50,7 +50,7 @@ function main() {
       //console.log(atmp);
 
       let file = path.join(workdir, subdir, filepath);
-      let contentType = mime.lookup(file);
+      let contentType = mime.getType(file);
       let cacheControl = conf.cacheControl;
 
       res.setHeader('Access-Control-Allow-Origin', '*');
