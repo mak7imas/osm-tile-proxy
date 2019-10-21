@@ -1,0 +1,21 @@
+{
+  "name": "osm-tile-proxy",
+  "version": "1.0.0",
+  "description": "OSM tiles proxy for leaflet",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "osm",
+    "map",
+    "proxy",
+    "tile",
+    "cache"
+  ],
+  "author": "Maxim Andreev",
+  "license": "ISC",
+  "dependencies": {
+    "mime": "^2.4.4"
+  }
+}
