@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  prod.osmtileproxy:
+    #restart: always
+    build: .
+    networks:
+      - backend
+    expose:
+      - "3005"
+
+networks:
+  backend:
+    external: true
+
