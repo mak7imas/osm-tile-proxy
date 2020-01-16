@@ -20,7 +20,8 @@ function download(url, dest, pipe) {
   return new Promise((resolve, reject) => {
     const stream = fs.createWriteStream(dest);
     const options = {
-      headers:  { 'User-Agent': 'Mozilla/5.0' }
+      //headers:  { 'User-Agent': 'Mozilla/5.0' }
+      headers:  { 'User-Agent': 'MA OSM Proxy 0.1' }
     }
     const request = http.get(url, options, (response) => {
       if (response.statusCode !== 200) {
