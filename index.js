@@ -12,7 +12,7 @@ const conf = {
   port: 3005,
   workdir: path.join(__dirname, 'tilecache'),
   cacheControl: 'public, max-age=8640000',
-  minSize: 200,
+  minSize: 700,
   maxCacheDays: 365,
 }
 
