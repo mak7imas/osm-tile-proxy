@@ -21,7 +21,7 @@ function download(url, dest, pipe) {
     const stream = fs.createWriteStream(dest);
     const request = http.get(url, (response) => {
       if (response.statusCode !== 200) {
-        return reject(new Error('Response status was ' + response.statusCode));
+        return reject(new Error(`Response status was ${response.statusCode} on url ${url}`));
       }
       if (pipe) response.pipe(pipe);
       response.pipe(stream);
@@ -101,7 +101,7 @@ function main() {
         res.statusCode = 200;
         res.end();
       }).catch((e) => {
-        console.log("Error: ", e.message);
+        //console.log("Error:", e.message);
         console.log(e.stack);
         res.statusCode = 500;
         res.statusMessage = e.message;
