@@ -48,7 +48,7 @@ function responseFile(url, file, res) {
     try {
       const stats = fs.statSync(file);
       const curtime = new Date();
-      const timeDifference = Math.ceil(Math.abs(curtime.getTime() - stats.mtime.getTime()) / (1000 * 3600 * 24));
+      const timeDifference = Math.ceil(Math.abs(curtime.getTime() - stats.mtime.getTime()) / (1000 * 3600 * 24 * 60));
       readFromCache = stats.size > conf.minSize && timeDifference < conf.maxCacheDays
     } catch (e) {
       readFromCache = false;
