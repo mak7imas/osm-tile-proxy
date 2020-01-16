@@ -19,8 +19,12 @@ const conf = {
 function download(url, dest, pipe) {
   return new Promise((resolve, reject) => {
     const stream = fs.createWriteStream(dest);
-    const request = http.get(url, (response) => {
+    const options = {
+      headers:  { 'User-Agent': 'Mozilla/5.0' }
+    }
+    const request = http.get(url, options, (response) => {
       if (response.statusCode !== 200) {
+        response.resume();
         return reject(new Error(`Response status was ${response.statusCode} on url ${url}`));
       }
       if (pipe) response.pipe(pipe);
@@ -44,7 +48,7 @@ function responseFile(url, file, res) {
     try {
       const stats = fs.statSync(file);
       const curtime = new Date();
-      const timeDifference = Math.ceil(Math.abs(curtime.getTime() - stats.mtime.getTime()) / (1000 * 3600 * 24) );
+      const timeDifference = Math.ceil(Math.abs(curtime.getTime() - stats.mtime.getTime()) / (1000 * 3600 * 24));
       readFromCache = stats.size > conf.minSize && timeDifference < conf.maxCacheDays
     } catch (e) {
       readFromCache = false;
